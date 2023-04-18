@@ -8,13 +8,31 @@
 </head>
 <body>
     <script>
-        const choice = ["Rock", "Paper", "Scissors"];
+        const choice = ["rock", "paper", "scissors"];
         function getComputerChoice(){
             return choice[Math.floor(Math.random() * choice.length)]
         }
 
-        function gameLoop(playerSelection, computerChoice){
-            if 
+        function oneRound(playerSelection, computerChoice){
+            if (playerSelection == "paper" && computerChoice == "rock"){
+                console.log("You win! Paper beats Rock.");
+            }
+            else if (playerSelection == "scissors" && computerChoice == "paper"){
+                console.log("You win! Scissors beat Paper.");
+            }
+            else if (playerSelection == "rock" && computerChoice == "scissors"){
+                console.log("You win! Rock beats Scissors.");
+            }
+            else if(playerSelection == "paper" && computerChoice == "scissors"){
+                console.log("You loose! Scissors beat Paper.");
+            }
+            else if(playerSelection == "rock" && computerChoice == "paper"){
+                console.log("You loose! Paper beats Rock.");
+            }
+            else if(playerSelection == "scissors" && computerChoice == "rock"){
+                console.log("You loose! Rock beats Scissors.")
+            }
+
         }
     </script>
 </body>
