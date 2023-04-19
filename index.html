@@ -9,38 +9,63 @@
 <body>
     <script>
         
+        
         function computerChoice() {
             return choice[Math.floor(Math.random() * choice.length)]
         }
 
+
         function oneRound(playerSelection, computerSelection){
             if (playerSelection == "paper" && computerSelection == "rock"){
-                console.log("You win! Paper beats Rock.");
+                alert("You win! Paper beats Rock.");
             }
             else if (playerSelection == "scissors" && computerSelection == "paper"){
-                console.log("You win! Scissors beat Paper.");
+                alert("You win! Scissors beat Paper.");
             }
             else if (playerSelection == "rock" && computerSelection == "scissors"){
-                console.log("You win! Rock beats Scissors.");
+                alert("You win! Rock beats Scissors.");
             }
             else if(playerSelection == "paper" && computerSelection == "scissors"){
-                console.log("You loose! Scissors beat Paper.");
+                alert("You loose! Scissors beat Paper.");
             }
             else if(playerSelection == "rock" && computerSelection == "paper"){
-                console.log("You loose! Paper beats Rock.");
+                alert("You loose! Paper beats Rock.");
             }
             else if(playerSelection == "scissors" && computerSelection == "rock"){
-                console.log("You loose! Rock beats Scissors.");
+                alert("You loose! Rock beats Scissors.");
             }
             else{
-                console.log("It's a draw.");
+                alert("It's a draw.");
             }
         }
-        const choice = ["rock", "paper", "scissors"];
-        const playerSelection = 'rock';
-        const computerSelection = computerChoice();
 
-        oneRound(playerSelection, computerSelection);
+        function game() {
+
+            let round = 0;
+
+            while(round <= 4){
+
+                const playerSelection = prompt("What do you choose?(rock,paper,scissors)").toLowerCase();
+
+                // This if clause is used for safety reasons. If the user enters a non-valid character, the program will not break.
+                if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors"){
+                    alert("Not a valid choice. Please enter rock, paper or scissors.");
+                    continue;
+                }
+
+                const computerSelection = computerChoice();
+
+                oneRound(playerSelection, computerSelection);
+                round++;
+            }
+            alert("Game over.GG");
+        }
+
+
+        const choice = ["rock", "paper", "scissors"];
+        game();
+
+
     </script>
 </body>
 </html>
