@@ -8,32 +8,39 @@
 </head>
 <body>
     <script>
-        const choice = ["rock", "paper", "scissors"];
-        function getComputerChoice(){
+        
+        function computerChoice() {
             return choice[Math.floor(Math.random() * choice.length)]
         }
 
-        function oneRound(playerSelection, computerChoice){
-            if (playerSelection == "paper" && computerChoice == "rock"){
+        function oneRound(playerSelection, computerSelection){
+            if (playerSelection == "paper" && computerSelection == "rock"){
                 console.log("You win! Paper beats Rock.");
             }
-            else if (playerSelection == "scissors" && computerChoice == "paper"){
+            else if (playerSelection == "scissors" && computerSelection == "paper"){
                 console.log("You win! Scissors beat Paper.");
             }
-            else if (playerSelection == "rock" && computerChoice == "scissors"){
+            else if (playerSelection == "rock" && computerSelection == "scissors"){
                 console.log("You win! Rock beats Scissors.");
             }
-            else if(playerSelection == "paper" && computerChoice == "scissors"){
+            else if(playerSelection == "paper" && computerSelection == "scissors"){
                 console.log("You loose! Scissors beat Paper.");
             }
-            else if(playerSelection == "rock" && computerChoice == "paper"){
+            else if(playerSelection == "rock" && computerSelection == "paper"){
                 console.log("You loose! Paper beats Rock.");
             }
-            else if(playerSelection == "scissors" && computerChoice == "rock"){
-                console.log("You loose! Rock beats Scissors.")
+            else if(playerSelection == "scissors" && computerSelection == "rock"){
+                console.log("You loose! Rock beats Scissors.");
             }
-
+            else{
+                console.log("It's a draw.");
+            }
         }
+        const choice = ["rock", "paper", "scissors"];
+        const playerSelection = 'rock';
+        const computerSelection = computerChoice();
+
+        oneRound(playerSelection, computerSelection);
     </script>
 </body>
 </html>
