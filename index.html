@@ -28,7 +28,10 @@
         
         
         function computerChoice() {
-            return choice[Math.floor(Math.random() * choice.length)]
+            const comp = document.querySelector('.comp-card');
+            const choice = ["rock", "paper", "scissors"];
+            comp.textContent = choice[Math.floor(Math.random() * choice.length)]
+            return comp.textContent
         }
 
 
@@ -56,16 +59,17 @@
             }
         }
         
-        let userChoice;
-        const choice = ["rock", "paper", "scissors"];
+
         const userOpt = document.querySelectorAll(".choice");
         const userOptArr = Array.from(userOpt);
 
-        
+
         userOptArr.forEach(choice => {
             choice.addEventListener('click', () => {
-                userChoice = choice.value;
-                console.log(userChoice);
+                let userChoice = choice.value;
+                let computerSel = computerChoice();
+                oneRound(userChoice, computerSel);
+                
             });
         });
 
