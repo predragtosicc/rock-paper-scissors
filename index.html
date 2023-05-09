@@ -13,9 +13,9 @@
         <h1>Rock paper scissors</h1>
         <div class = "card-holder">
             <div class = "human-card">
-                <button class="choice">Rock</button>
-                <button class="choice">Paper</button>
-                <button class="choice">Scissors</button>
+                <button class="choice" value = 'rock'>Rock</button>
+                <button class="choice" value = 'paper'>Paper</button>
+                <button class="choice" value = 'scissors'>Scissors</button>
             </div>
             <div class="comp-card">?</div>
         </div>
@@ -55,32 +55,19 @@
                 alert("It's a draw.");
             }
         }
-
-        function game() {
-
-            let round = 0;
-
-            while(round <= 4){
-
-                const playerSelection = prompt("What do you choose?(rock,paper,scissors)").toLowerCase();
-
-                // This if clause is used for safety reasons. If the user enters a non-valid character, the program will not break.
-                if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors"){
-                    alert("Not a valid choice. Please enter rock, paper or scissors.");
-                    continue;
-                }
-
-                const computerSelection = computerChoice();
-
-                oneRound(playerSelection, computerSelection);
-                round++;
-            }
-            alert("Game over.GG");
-        }
-
-
+        
+        let userChoice;
         const choice = ["rock", "paper", "scissors"];
-        game();
+        const userOpt = document.querySelectorAll(".choice");
+        const userOptArr = Array.from(userOpt);
+
+        
+        userOptArr.forEach(choice => {
+            choice.addEventListener('click', () => {
+                userChoice = choice.value;
+                console.log(userChoice);
+            });
+        });
 
 
     </script>
