@@ -46,8 +46,10 @@ h1 {
 }
 
 .comp-card {
-    font-size: 175px;
-    text-align: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
     color: white;    
 }
 
@@ -74,7 +76,9 @@ h1 {
 }
 
 .score-holder {
+    display: flex;
     color: white;
-    font-size: 30px;    
+    font-size: 30px;
+    gap: 50px;    
 }
 

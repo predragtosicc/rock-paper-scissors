@@ -13,14 +13,17 @@
         <h1>Rock paper scissors</h1>
         <div class = "card-holder">
             <div class = "human-card">
-                <button class="choice" value = 'rock'>Rock</button>
-                <button class="choice" value = 'paper'>Paper</button>
-                <button class="choice" value = 'scissors'>Scissors</button>
+                <button class="choice" value = 'rock'>rock</button>
+                <button class="choice" value = 'paper'>paper</button>
+                <button class="choice" value = 'scissors'>scissors</button>
             </div>
-            <div class="comp-card">?</div>
+            <div class="comp-card"><span class="comp-choice"></span></div>
         </div>
         <p class = "info"></p>
-        <p class = "score-holder">Score: <span class = "score">0</span></p>
+        <div class = "score-holder">
+            <p>Player score: <span class ="player-score">0</span></p>
+            <p>Comp score: <span class = "computer-score">0</span></p>
+        </div>
     </div>
     
 
@@ -31,31 +34,35 @@
             const comp = document.querySelector('.comp-card');
             const choice = ["rock", "paper", "scissors"];
             comp.textContent = choice[Math.floor(Math.random() * choice.length)]
+            comp.style.fontSize = 30;
             return comp.textContent
         }
 
 
-        function oneRound(playerSelection, computerSelection){
+        function playRound(playerSelection, computerSelection){
             if (playerSelection == "paper" && computerSelection == "rock"){
+                let score = document.querySelector(".player-score");
+                let scoreVal = Number(score) + 1;
+                score.textContent = scoreVal.toString();
                 
             }
             else if (playerSelection == "scissors" && computerSelection == "paper"){
-               
+                let score = document.querySelector(".player-score");
+                let scoreVal = Number(score) + 1;
+                score.textContent = scoreVal.toString();
             }
             else if (playerSelection == "rock" && computerSelection == "scissors"){
-                
+                let score = document.querySelector(".player-score");
+                let scoreVal = Number(score) + 1;
+                score.textContent = scoreVal.toString();
             }
-            else if(playerSelection == "paper" && computerSelection == "scissors"){
-                
-            }
-            else if(playerSelection == "rock" && computerSelection == "paper"){
-                
-            }
-            else if(playerSelection == "scissors" && computerSelection == "rock"){
-                
+            else if (playerSelection === computerSelection){
+                return
             }
             else{
-                
+                let score = document.querySelector(".comp-score");
+                let scoreVal = Number(score) + 1;
+                score.textContent = scoreVal.toString();
             }
         }
         
@@ -68,7 +75,7 @@
             choice.addEventListener('click', () => {
                 let userChoice = choice.value;
                 let computerSel = computerChoice();
-                oneRound(userChoice, computerSel);
+                playRound(userChoice, computerSel)
                 
             });
         });
