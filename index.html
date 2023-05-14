@@ -37,28 +37,48 @@
             return comp.textContent
         }
 
+        function checkForWinner(userScore,computerScore){
+            let winText = document.querySelector('.info');
+            if(userScore == 5){
+                wintext.textContent = 'You win, congrats!';
+                return
+            }else if(computerScore == 5){
+                wintext.textContent = 'Computer wins, better luck next time!';
+                return
+            }
+        }
+
 
         function playRound(playerSelection, computerSelection){
             if (playerSelection == "paper" && computerSelection == "rock"){
+                let winText = document.querySelector('.info');
                 let score = document.querySelector(".player-score");
                 let scoreVal = Number(score.textContent) + 1;
                 score.textContent = scoreVal.toString();
-                
+                winText.textContent = 'You won a round!';
+
             }
             else if (playerSelection == "scissors" && computerSelection == "paper"){
+                let winText = document.querySelector('.info');
                 let score = document.querySelector(".player-score");
                 let scoreVal = Number(score.textContent) + 1;
                 score.textContent = scoreVal.toString();
+                winText.textContent = 'You won a round!';
             }
             else if (playerSelection == "rock" && computerSelection == "scissors"){
+                let winText = document.querySelector('.info');
                 let score = document.querySelector(".player-score");
                 let scoreVal = Number(score.textContent) + 1;
                 score.textContent = scoreVal.toString();
+                winText.textContent = 'You won a round!';
             }
             else if (playerSelection === computerSelection){
-                return
+                let winText = document.querySelector('.info');
+                winText.textContent = 'It\'s a draw.';
             }
             else{
+                let winText = document.querySelector('.info');
+                winText.textContent = 'Computer wins a round.';
                 let score = document.querySelector(".computer-score");
                 let scoreVal = Number(score.textContent) + 1;
                 score.textContent = scoreVal.toString();
@@ -68,17 +88,18 @@
 
         const userOpt = document.querySelectorAll(".choice");
         const userOptArr = Array.from(userOpt);
-        let usrScore = Number(document.querySelector(".player-score")).textContent;
-
         userOptArr.forEach(choice => {
-            
             choice.addEventListener('click', () => {
+                let userScore = Number(document.querySelector('.player-score').textContent);
+                let computerScore = Number(document.querySelector('.computer-score').textContent);
                 let userChoice = choice.value;
                 let computerSel = computerChoice();
                 playRound(userChoice, computerSel)
-                
-            });
+                checkForWinner(userScore,computerScore);
+            });    
         });
+    
+        
 
 
     </script>
