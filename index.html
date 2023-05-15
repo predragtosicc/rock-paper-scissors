@@ -37,17 +37,6 @@
             return comp.textContent
         }
 
-        function checkForWinner(userScore,computerScore){
-            let winText = document.querySelector('.info');
-            if(userScore == 5){
-                wintext.textContent = 'You win, congrats!';
-                return
-            }else if(computerScore == 5){
-                wintext.textContent = 'Computer wins, better luck next time!';
-                return
-            }
-        }
-
 
         function playRound(playerSelection, computerSelection){
             if (playerSelection == "paper" && computerSelection == "rock"){
@@ -88,16 +77,24 @@
 
         const userOpt = document.querySelectorAll(".choice");
         const userOptArr = Array.from(userOpt);
-        userOptArr.forEach(choice => {
+        
+       
+        userChoice = userOptArr.forEach(choice => {
             choice.addEventListener('click', () => {
                 let userScore = Number(document.querySelector('.player-score').textContent);
                 let computerScore = Number(document.querySelector('.computer-score').textContent);
-                let userChoice = choice.value;
-                let computerSel = computerChoice();
-                playRound(userChoice, computerSel)
-                checkForWinner(userScore,computerScore);
-            });    
-        });
+                if(userScore < 5 && computerScore < 5){
+                    playRound(choice.value, computerChoice())
+                }else{
+                    let winText = document.querySelector('.info');
+                    winText.textContent = "We have a winner!";
+                }
+                });    
+            });
+        
+    
+
+        
     
         
 
